@@ -1,0 +1,52 @@
+[
+  {
+    "id": "cloze",
+    "name": "ClozeShave",
+    "url": "https://clozeshave.lovable.app",
+    "description": "AI-generated cloze passages for reading comprehension practice.",
+    "icon": "scissors",
+    "color": "teal",
+    "status": "live",
+    "tags": ["cloze", "AI", "reading"]
+  },
+  {
+    "id": "sbcbrain",
+    "name": "SBC Brain",
+    "url": "https://sbcbrain.lovable.app",
+    "description": "AI-powered learning tool for SBC students.",
+    "icon": "brain",
+    "color": "purple",
+    "status": "live",
+    "tags": ["AI", "learning"]
+  },
+  {
+    "id": "wordtoworld",
+    "name": "Word to World",
+    "url": "https://wordtoworld.lovable.app",
+    "description": "Vocabulary in context — bridging words to real-world meaning.",
+    "icon": "world",
+    "color": "blue",
+    "status": "live",
+    "tags": ["vocabulary", "context"]
+  },
+  {
+    "id": "grammargrandma",
+    "name": "Grammar Grandma",
+    "url": "https://grammargrandma.lovable.app",
+    "description": "Grammar practice with a warm, patient teaching persona.",
+    "icon": "book",
+    "color": "amber",
+    "status": "live",
+    "tags": ["grammar", "practice"]
+  },
+  {
+    "id": "saidisdead",
+    "name": "Said is Dead",
+    "url": "https://saidisdead.lovable.app",
+    "description": "Expand dialogue vocabulary — kill 'said', find better words.",
+    "icon": "message-2",
+    "color": "coral",
+    "status": "live",
+    "tags": ["writing", "vocabulary"]
+  }
+]

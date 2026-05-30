@@ -48,5 +48,15 @@
     "color": "coral",
     "status": "live",
     "tags": ["writing", "vocabulary"]
+  },
+  {
+    "id": "canornot",
+    "name": "Can or Not",
+    "url": "https://canornot.lovable.app",
+    "description": "Scheduler tool for teachers.",
+    "icon": "calendar",
+    "color": "purple",
+    "status": "live",
+    "tags": ["scheduling", "tools"]
   }
 ]

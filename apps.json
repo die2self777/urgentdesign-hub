@@ -27,7 +27,7 @@
     "icon": "world",
     "color": "blue",
     "status": "live",
-    "tags": ["vocabulary", "context"]
+    "tags": ["vocabulary", "context", "themes", "plots"]
   },
   {
     "id": "grammargrandma",
@@ -37,7 +37,7 @@
     "icon": "book",
     "color": "amber",
     "status": "live",
-    "tags": ["grammar", "practice"]
+    "tags": ["grammar", "FFM"]
   },
   {
     "id": "saidisdead",
@@ -57,6 +57,6 @@
     "icon": "calendar",
     "color": "purple",
     "status": "live",
-    "tags": ["scheduling", "tools"]
+    "tags": ["scheduling", "meeting"]
   }
 ]

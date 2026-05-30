@@ -12,13 +12,14 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #0d0d0b;
-    --bg2: #141410;
-    --bg3: #1c1c17;
-    --border: rgba(255,255,255,0.08);
-    --text: #f0ede4;
-    --muted: rgba(240,237,228,0.5);
-    --dim: rgba(240,237,228,0.25);
+    --bg: #ffffff;
+    --bg2: #f7f6f3;
+    --bg3: #eeecea;
+    --border: rgba(0,0,0,0.08);
+    --border-hover: rgba(0,0,0,0.18);
+    --text: #111110;
+    --muted: rgba(17,17,16,0.55);
+    --dim: rgba(17,17,16,0.35);
     --radius: 12px;
     --radius-sm: 6px;
   }
@@ -35,24 +36,15 @@
     overflow-x: hidden;
   }
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.6;
-  }
-
   .page { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
+  /* ── HEADER ── */
   header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 2rem 0 1.5rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 2px solid var(--text);
   }
 
   .logo { display: flex; align-items: baseline; gap: 0.5rem; }
@@ -63,13 +55,15 @@
   .header-meta span { display: block; }
   #last-updated { color: var(--muted); }
 
-  .hero { padding: 5rem 0 4rem; }
-  .hero-eyebrow { font-size: 0.7rem; color: #1D9E75; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem; }
+  /* ── HERO ── */
+  .hero { padding: 5rem 0 4rem; border-bottom: 1px solid var(--border); }
+  .hero-eyebrow { font-size: 0.7rem; color: #0e7a57; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.25rem; }
   .hero-title { font-family: 'Fraunces', serif; font-size: clamp(2.8rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.05; letter-spacing: -0.03em; color: var(--text); margin-bottom: 1.5rem; }
   .hero-title em { font-style: italic; font-weight: 300; color: var(--muted); }
   .hero-sub { max-width: 540px; color: var(--muted); font-size: 0.875rem; line-height: 1.75; }
 
-  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; padding-top: 1rem; }
+  /* ── APPS GRID ── */
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; padding-top: 2rem; }
   .section-label { font-size: 0.7rem; color: var(--dim); letter-spacing: 0.1em; text-transform: uppercase; }
   #app-count { font-size: 0.7rem; color: var(--dim); font-style: italic; }
 
@@ -85,7 +79,7 @@
   }
 
   .app-card {
-    background: var(--bg2);
+    background: var(--bg);
     padding: 1.75rem;
     text-decoration: none;
     color: inherit;
@@ -100,42 +94,60 @@
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 2px;
+    height: 3px;
     background: var(--card-accent, transparent);
     opacity: 0;
     transition: opacity 0.2s ease;
   }
-  .app-card:hover { background: var(--bg3); }
+  .app-card:hover { background: var(--bg2); }
   .app-card:hover::before { opacity: 1; }
 
   .card-top { display: flex; align-items: flex-start; justify-content: space-between; }
-  .card-icon { width: 36px; height: 36px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; font-size: 18px; background: var(--icon-bg, rgba(255,255,255,0.05)); color: var(--icon-color, var(--muted)); flex-shrink: 0; }
+  .card-icon {
+    width: 38px; height: 38px;
+    border-radius: var(--radius-sm);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px;
+    background: var(--icon-bg);
+    color: var(--icon-color);
+    flex-shrink: 0;
+  }
 
-  .card-status { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; border: 1px solid currentColor; opacity: 0.7; }
-  .status-live { color: #1D9E75; }
-  .status-beta { color: #EF9F27; }
-  .status-wip { color: var(--dim); }
+  .card-status { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; border: 1px solid currentColor; font-weight: 500; }
+  .status-live { color: #0e7a57; background: rgba(14,122,87,0.08); }
+  .status-beta { color: #b45309; background: rgba(180,83,9,0.08); }
+  .status-wip  { color: var(--dim); background: var(--bg2); }
 
   .card-name { font-family: 'Fraunces', serif; font-size: 1.15rem; font-weight: 700; color: var(--text); letter-spacing: -0.01em; margin-bottom: 0.4rem; }
   .card-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
 
-  .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 0.75rem; border-top: 1px solid var(--border); }
   .card-url { font-size: 0.7rem; color: var(--dim); font-style: italic; }
-  .card-arrow { font-size: 0.75rem; color: var(--dim); transition: transform 0.2s, color 0.2s; }
+  .card-arrow { font-size: 0.8rem; color: var(--dim); transition: transform 0.2s, color 0.2s; }
   .app-card:hover .card-arrow { transform: translate(3px, -3px); color: var(--icon-color); }
 
   .card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
-  .tag { font-size: 0.65rem; padding: 2px 7px; border-radius: 100px; background: var(--bg3); color: var(--dim); border: 1px solid var(--border); letter-spacing: 0.04em; }
+  .tag { font-size: 0.65rem; padding: 2px 8px; border-radius: 100px; background: var(--bg3); color: var(--muted); border: 1px solid var(--border); letter-spacing: 0.04em; }
 
   .state-msg { grid-column: 1/-1; padding: 3rem; text-align: center; color: var(--dim); font-style: italic; font-size: 0.85rem; }
 
-  footer { border-top: 1px solid var(--border); padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; color: var(--dim); font-size: 0.7rem; }
+  /* ── FOOTER ── */
+  footer {
+    border-top: 2px solid var(--text);
+    padding: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--dim);
+    font-size: 0.7rem;
+  }
   footer a { color: var(--dim); text-decoration: none; }
-  footer a:hover { color: var(--muted); }
+  footer a:hover { color: var(--text); }
 </style>
 </head>
 <body>
 <div class="page">
+
   <header>
     <div class="logo">
       <span class="logo-mark">Urgent Design</span>
@@ -173,23 +185,23 @@
       <a href="https://notion.so" target="_blank" rel="noopener">notion</a>
     </span>
   </footer>
+
 </div>
 
 <script>
 const COLOR_MAP = {
-  teal:   { accent: '#1D9E75', bg: 'rgba(29,158,117,0.12)' },
-  purple: { accent: '#7F77DD', bg: 'rgba(127,119,221,0.12)' },
-  blue:   { accent: '#378ADD', bg: 'rgba(55,138,221,0.12)' },
-  amber:  { accent: '#EF9F27', bg: 'rgba(239,159,39,0.12)' },
-  coral:  { accent: '#D85A30', bg: 'rgba(216,90,48,0.12)' },
-  pink:   { accent: '#D4537E', bg: 'rgba(212,83,126,0.12)' },
+  teal:   { accent: '#0e7a57', bg: 'rgba(14,122,87,0.1)' },
+  purple: { accent: '#5b52c7', bg: 'rgba(91,82,199,0.1)' },
+  blue:   { accent: '#1a6db5', bg: 'rgba(26,109,181,0.1)' },
+  amber:  { accent: '#b45309', bg: 'rgba(180,83,9,0.1)'  },
+  coral:  { accent: '#c0391a', bg: 'rgba(192,57,26,0.1)' },
+  pink:   { accent: '#a8365f', bg: 'rgba(168,54,95,0.1)' },
 };
 
 function buildCard(app) {
   const { accent, bg } = COLOR_MAP[app.color] || COLOR_MAP.teal;
   const url = app.url;
   const displayUrl = url.replace('https://', '');
-
   const statusClass = { live: 'status-live', beta: 'status-beta', wip: 'status-wip' }[app.status] || 'status-wip';
   const tags = (app.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
 
@@ -234,7 +246,6 @@ async function loadApps() {
     lastUpdated.textContent = `updated ${new Date().toLocaleDateString('en-SG', { day:'numeric', month:'short', year:'numeric' })}`;
 
   } catch (err) {
-    console.error('Failed to load apps.json:', err);
     grid.innerHTML = `<div class="state-msg">Could not load apps.json<br><span style="font-size:0.75rem;opacity:0.6">${err.message}</span></div>`;
     counter.textContent = '—';
   }

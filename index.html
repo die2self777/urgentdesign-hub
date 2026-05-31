@@ -240,7 +240,7 @@ async function loadApps() {
       return;
     }
 
-    grid.innerHTML = apps.map(buildCard).join('');
+    grid.innerHTML = [...apps].reverse().map(buildCard).join('');
     const live = apps.filter(a => a.status === 'live').length;
     counter.textContent = `${apps.length} app${apps.length !== 1 ? 's' : ''} · ${live} live`;
     lastUpdated.textContent = `updated ${new Date().toLocaleDateString('en-SG', { day:'numeric', month:'short', year:'numeric' })}`;

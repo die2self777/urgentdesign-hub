@@ -58,5 +58,15 @@
     "color": "purple",
     "status": "live",
     "tags": ["scheduling", "meeting"]
+  },
+    {
+    "id": "readornot",
+    "name": "Read or Not",
+    "url": "https://readornot.base44.app",
+    "description": "Book Reviews and Customised recommendations from Top 100 Children's Books.",
+    "icon": "calendar",
+    "color": "purple",
+    "status": "live",
+    "tags": ["reading", "extensive reading", "reviews"]
   }
 ]

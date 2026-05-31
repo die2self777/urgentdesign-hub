@@ -68,5 +68,15 @@
     "color": "purple",
     "status": "live",
     "tags": ["extensive reading", "reviews"]
+  },
+      {
+    "id": "typists",
+    "name": "Pete's Typists",
+    "url": "https://petestypists.lovable.app",
+    "description": "Typing speed + memorising important chunks",
+    "icon": "calendar",
+    "color": "purple",
+    "status": "live",
+    "tags": ["typing", "writing"]
   }
 ]

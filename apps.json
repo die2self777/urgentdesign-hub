@@ -88,5 +88,15 @@
     "color": "orange",
     "status": "live",
     "tags": ["grammar", "SVA"]
+  },
+   {
+    "id": "PSLE",
+    "name": "Milking a Text",
+    "url": "https://watercoolerbeans.lovable.app/",
+    "description": "A daily rich text and PSLE-type questions to milk it",
+    "icon": "calendar",
+    "color": "orange",
+    "status": "live",
+    "tags": ["PSLE", "richtext"]
   }
 ]

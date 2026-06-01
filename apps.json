@@ -79,4 +79,14 @@
     "status": "live",
     "tags": ["typing", "writing"]
   }
+    {
+    "id": "SVA",
+    "name": "Mandy's Marshmallows",
+    "url": "https://marshmallow-grammar-escape.lovable.app",
+    "description": "Eat. Escape. Endure. Repeat. All-day, SVA, every day.",
+    "icon": "calendar",
+    "color": "orange",
+    "status": "live",
+    "tags": ["grammar", "SVA"]
+  }
 ]

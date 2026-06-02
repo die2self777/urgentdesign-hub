@@ -98,5 +98,15 @@
     "color": "orange",
     "status": "live",
     "tags": ["PSLE", "richtext"]
+  },
+      {
+    "id": "Synthesise and Transform",
+    "name": "S&T Trainer",
+    "url": "https://imaconnector.lovable.app/",
+    "description": "Weekly practices of 25 questions per topic",
+    "icon": "calendar",
+    "color": "orange",
+    "status": "live",
+    "tags": ["synthesis", "reportedspeech", "transformation"]
   }
 ]

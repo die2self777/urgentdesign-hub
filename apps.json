@@ -1,13 +1,13 @@
 [
-  {
-    "id": "cloze",
-    "name": "ClozeShave",
-    "url": "https://clozeshave.lovable.app",
-    "description": "AI-generated cloze passages for reading comprehension practice.",
-    "icon": "scissors",
-    "color": "teal",
+    {
+    "id": "canornot",
+    "name": "Can or Not",
+    "url": "https://canornot.lovable.app",
+    "description": "Scheduler tool for teachers.",
+    "icon": "calendar",
+    "color": "purple",
     "status": "live",
-    "tags": ["cloze", "AI", "reading"]
+    "tags": ["scheduling", "meeting"]
   },
   {
     "id": "sbcbrain",
@@ -50,14 +50,14 @@
     "tags": ["writing", "vocabulary"]
   },
   {
-    "id": "canornot",
-    "name": "Can or Not",
-    "url": "https://canornot.lovable.app",
-    "description": "Scheduler tool for teachers.",
-    "icon": "calendar",
-    "color": "purple",
+    "id": "cloze",
+    "name": "ClozeShave",
+    "url": "https://clozeshave.lovable.app",
+    "description": "AI-generated cloze passages for reading comprehension practice.",
+    "icon": "scissors",
+    "color": "teal",
     "status": "live",
-    "tags": ["scheduling", "meeting"]
+    "tags": ["cloze", "AI", "reading"]
   },
     {
     "id": "readornot",

@@ -108,5 +108,15 @@
     "color": "orange",
     "status": "live",
     "tags": ["synthesis", "reportedspeech", "transformation"]
+  },
+        {
+    "id": "Synthesise and Transform",
+    "name": "S&T Trainer",
+    "url": "https://elarcade.lovable.app/",
+    "description": "EL Games Hub",
+    "icon": "calendar",
+    "color": "red",
+    "status": "DEVELOPING",
+    "tags": ["words", "games", "hub"]
   }
 ]

@@ -106,7 +106,7 @@
     "description": "Weekly topical practices with tutor",
     "icon": "calendar",
     "color": "RED",
-    "status": "DEVELOPING",
+    "status": "live",
     "tags": ["synthesis", "reportedspeech", "transformation"]
   },
         {
@@ -116,7 +116,7 @@
     "description": "EL Games Hub",
     "icon": "calendar",
     "color": "red",
-    "status": "DEVELOPING",
+    "status": "live",
     "tags": ["words", "games", "hub"]
   }
 ]

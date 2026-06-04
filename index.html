@@ -62,12 +62,12 @@
   .hero-title em { font-style: italic; font-weight: 300; color: var(--muted); }
   .hero-sub { max-width: 540px; color: var(--muted); font-size: 0.875rem; line-height: 1.75; }
 
-  /* ── APPS GRID ── */
-  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; padding-top: 2rem; }
+  /* ── APPS GRID (Dynamic Styling) ── */
+  .section-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.5rem; padding-top: 3rem; }
   .section-label { font-size: 0.7rem; color: var(--dim); letter-spacing: 0.1em; text-transform: uppercase; }
-  #app-count { font-size: 0.7rem; color: var(--dim); font-style: italic; }
+  .section-count { font-size: 0.7rem; color: var(--dim); font-style: italic; }
 
-  #apps-grid {
+  .apps-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1px;
@@ -75,7 +75,7 @@
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
   }
 
   .app-card {
@@ -135,6 +135,7 @@
   footer {
     border-top: 2px solid var(--text);
     padding: 2rem 0;
+    margin-top: 3rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -168,13 +169,8 @@
     <p class="hero-sub">A decoupled suite of AI-assisted learning tools. Built by well-loved, long-suffering teachers, in response to real classroom needs.</p>
   </section>
 
-  <div class="section-header">
-    <span class="section-label">// live apps</span>
-    <span id="app-count">loading…</span>
-  </div>
-
-  <div id="apps-grid">
-    <div class="state-msg">Fetching apps…</div>
+  <div id="ecosystem-container">
+    <div class="state-msg">Fetching ecosystem…</div>
   </div>
 
   <footer>
@@ -201,7 +197,7 @@ const COLOR_MAP = {
 function buildCard(app) {
   const { accent, bg } = COLOR_MAP[app.color] || COLOR_MAP.teal;
   const url = app.url;
-  const displayUrl = url.replace('https://', '');
+  const displayUrl = url ? url.replace('https://', '') : '';
   const statusClass = { live: 'status-live', beta: 'status-beta', wip: 'status-wip' }[app.status] || 'status-wip';
   const tags = (app.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
 
@@ -210,7 +206,7 @@ function buildCard(app) {
        style="--card-accent:${accent};--icon-bg:${bg};--icon-color:${accent}">
       <div class="card-top">
         <div class="card-icon"><i class="ti ti-${app.icon || 'app-window'}"></i></div>
-        <span class="card-status ${statusClass}">${app.status}</span>
+        <span class="card-status ${statusClass}">${app.status || 'wip'}</span>
       </div>
       <div class="card-body">
         <div class="card-name">${app.name}</div>
@@ -225,8 +221,7 @@ function buildCard(app) {
 }
 
 async function loadApps() {
-  const grid = document.getElementById('apps-grid');
-  const counter = document.getElementById('app-count');
+  const container = document.getElementById('ecosystem-container');
   const lastUpdated = document.getElementById('last-updated');
 
   try {
@@ -235,19 +230,44 @@ async function loadApps() {
     const apps = await res.json();
 
     if (!apps.length) {
-      grid.innerHTML = '<div class="state-msg">No apps deployed yet.</div>';
-      counter.textContent = '0 apps';
+      container.innerHTML = '<div class="state-msg">No apps deployed yet.</div>';
       return;
     }
 
-    grid.innerHTML = [...apps].reverse().map(buildCard).join('');
-    const live = apps.filter(a => a.status === 'live').length;
-    counter.textContent = `${apps.length} app${apps.length !== 1 ? 's' : ''} · ${live} live`;
+    // Group apps by category (defaulting to 'General Tools' if category missing)
+    const grouped = {};
+    apps.forEach(app => {
+      const cat = app.category || 'General Tools';
+      if (!grouped[cat]) grouped[cat] = [];
+      grouped[cat].push(app);
+    });
+
+    // Clear the loading message
+    container.innerHTML = '';
+
+    // Build sections dynamically for each category
+    Object.keys(grouped).sort().forEach(category => {
+      const categoryApps = grouped[category];
+      const liveCount = categoryApps.filter(a => a.status === 'live').length;
+
+      const sectionHtml = `
+        <div class="section-header">
+          <span class="section-label">// ${category} apps</span>
+          <span class="section-count">${categoryApps.length} total · ${liveCount} live</span>
+        </div>
+        <div class="apps-grid">
+          ${[...categoryApps].reverse().map(buildCard).join('')}
+        </div>
+      `;
+      
+      container.insertAdjacentHTML('beforeend', sectionHtml);
+    });
+
+    // Update global footer update date
     lastUpdated.textContent = `updated ${new Date().toLocaleDateString('en-SG', { day:'numeric', month:'short', year:'numeric' })}`;
 
   } catch (err) {
-    grid.innerHTML = `<div class="state-msg">Could not load apps.json<br><span style="font-size:0.75rem;opacity:0.6">${err.message}</span></div>`;
-    counter.textContent = '—';
+    container.innerHTML = `<div class="state-msg">Could not load apps.json<br><span style="font-size:0.75rem;opacity:0.6">${err.message}</span></div>`;
   }
 }
 

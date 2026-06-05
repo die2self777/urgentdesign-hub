@@ -273,7 +273,7 @@ function buildCard(app) {
   const tags = (app.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
   
   // Triggers the Bento Box layout for ClozeShave, or any app you add "featured": true to in the JSON.
-  const isFeatured = app.featured === true || app.name === 'ClozeShave';
+  const isFeatured = app.featured === true;
   const featuredClass = isFeatured ? 'featured' : '';
 
   return `

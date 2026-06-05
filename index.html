@@ -5,25 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Urgent Design — EdTech Ecosystem</title>
 
-<!-- EL Arcade Fonts: Inter for UI, JetBrains Mono for accents -->
+<!-- EL Arcade Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-
-<!-- FIXED: Corrected Tabler Icons path -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* ── EL ARCADE EXACT COLOR VARIABLES ── */
   :root {
-    --app-bg: oklch(0.99 0 0);         /* Pure/Off White */
-    --card-bg: oklch(1 0 0);           /* Pure White */
-    --text-main: oklch(0.14 0 0);      /* Near-Black */
-    --text-muted: oklch(0.46 0 0);     /* Muted Gray */
-    --primary: oklch(0.74 0.19 145);   /* Sharp Electric Green */
-    --border-soft: oklch(0.9 0 0);     /* Light Gray Border */
+    --app-bg: oklch(0.99 0 0);         
+    --card-bg: oklch(1 0 0);           
+    --text-main: oklch(0.14 0 0);      
+    --text-muted: oklch(0.46 0 0);     
+    --primary: oklch(0.74 0.19 145);   
+    --border-soft: oklch(0.9 0 0);     
     
     --radius-lg: 0.5rem;               
     --radius-md: calc(0.5rem - 2px);
@@ -38,8 +35,10 @@
 
   html { scroll-behavior: smooth; }
 
-  body {
-    background: var(--app-bg);
+  /* SUBTLE SVG GRID BACKGROUND */
+  body, .curtain-reveal {
+    background-color: var(--app-bg);
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 39.5h40M39.5 0v40' stroke='rgba(15,23,42,0.03)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
     color: var(--text-main);
     font-family: var(--font-display);
     font-size: 15px;
@@ -71,7 +70,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 2rem; /* Adjusted for sticky header */
+    padding: 1.5rem 2rem; 
   }
 
   .logo { display: flex; align-items: baseline; gap: 0.35rem; }
@@ -81,12 +80,12 @@
   .header-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: right; line-height: 1.5; }
   .header-meta span { display: block; }
 
-  /* ── STICKY HERO (Background Layer) ── */
+  /* ── STICKY HERO ── */
   .sticky-hero-container {
     position: sticky;
-    top: 120px; /* Sits right below the header */
+    top: 120px; 
     z-index: 1;
-    padding-bottom: 8rem; /* Creates scroll distance before curtain hits */
+    padding-bottom: 8rem; 
   }
 
   .hero { padding: 4rem 0 2rem; text-align: left; }
@@ -107,15 +106,14 @@
   .hero-title span { color: var(--primary); }
   .hero-sub { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; max-width: 600px; }
 
-  /* ── CURTAIN REVEAL (Foreground Layer sliding over Hero) ── */
+  /* ── CURTAIN REVEAL ── */
   .curtain-reveal {
     position: relative;
     z-index: 10;
-    background: var(--app-bg); /* Solid background to hide hero */
     border-top: 1px solid var(--border-soft);
-    box-shadow: 0 -20px 40px rgba(0,0,0,0.03); /* Soft shadow cast on hero */
+    box-shadow: 0 -20px 40px rgba(0,0,0,0.03); 
     padding-top: 2rem;
-    min-height: 100vh; /* Ensures it covers completely */
+    min-height: 100vh; 
   }
 
   /* ── APPS GRID ── */
@@ -130,6 +128,7 @@
     margin-bottom: 4rem;
   }
 
+  /* ── APP CARDS & STAGGERED REVEAL CSS ── */
   .app-card {
     background: var(--card-bg);
     padding: 1.75rem;
@@ -141,15 +140,34 @@
     flex-direction: column;
     gap: 1.25rem;
     box-shadow: var(--shadow-sm);
-    transition: all 0.2s ease;
     position: relative;
     z-index: 15;
+    
+    /* Reveal Animation Defaults */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   }
   
-  .app-card:hover { 
-    transform: translateY(-2px);
+  .app-card.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .app-card.revealed:hover { 
+    transform: translateY(-3px);
     box-shadow: var(--shadow-hover);
     border-color: var(--primary);
+  }
+
+  /* ── BENTO BOX FEATURED CARD ── */
+  @media (min-width: 768px) {
+    .app-card.featured {
+      grid-column: span 2;
+    }
+    .app-card.featured .card-name {
+      font-size: 1.4rem;
+    }
   }
 
   .card-top { display: flex; align-items: flex-start; justify-content: space-between; }
@@ -164,7 +182,6 @@
     transition: background 0.2s, color 0.2s;
   }
   
-  /* Fix: Prevents Inter font from overriding the icon */
   .card-icon i { font-family: 'tabler-icons' !important; font-style: normal; }
 
   .app-card:hover .card-icon {
@@ -174,7 +191,7 @@
 
   .card-status { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 8px; border-radius: var(--radius-sm); font-weight: 500; border: 1px solid transparent; }
   .status-live { color: var(--app-bg); background: var(--primary); } 
-  .status-beta { color: oklch(0.14 0 0); background: oklch(0.82 0.17 90); } /* Warning Yellow */
+  .status-beta { color: oklch(0.14 0 0); background: oklch(0.82 0.17 90); } 
   .status-wip  { color: var(--text-muted); background: oklch(0.96 0 0); }
 
   .card-name { font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.4rem; letter-spacing: -0.01em; }
@@ -190,7 +207,6 @@
 
   .state-msg { grid-column: 1/-1; padding: 3rem; text-align: center; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem; }
 
-  /* ── FOOTER ── */
   footer {
     border-top: 1px solid var(--border-soft);
     padding: 2rem 0 3rem;
@@ -208,7 +224,6 @@
 </head>
 <body>
 
-  <!-- STICKY FROSTED HEADER -->
   <header>
     <div class="page header-inner">
       <div class="logo">
@@ -222,7 +237,6 @@
     </div>
   </header>
 
-  <!-- BACKGROUND STICKY HERO -->
   <div class="sticky-hero-container">
     <section class="hero page">
       <p class="hero-eyebrow">Micro-App Hub</p>
@@ -234,10 +248,8 @@
     </section>
   </div>
 
-  <!-- FOREGROUND CURTAIN REVEAL -->
   <div class="curtain-reveal">
     <div class="page">
-      
       <div id="ecosystem-container">
         <div class="state-msg">Fetching ecosystem…</div>
       </div>
@@ -250,7 +262,6 @@
           <a href="https://notion.so" target="_blank" rel="noopener">notion</a>
         </span>
       </footer>
-      
     </div>
   </div>
 
@@ -260,9 +271,13 @@ function buildCard(app) {
   const displayUrl = url ? url.replace('https://', '') : '';
   const statusClass = { live: 'status-live', beta: 'status-beta', wip: 'status-wip' }[app.status] || 'status-wip';
   const tags = (app.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+  
+  // Triggers the Bento Box layout for ClozeShave, or any app you add "featured": true to in the JSON.
+  const isFeatured = app.featured === true || app.name === 'ClozeShave';
+  const featuredClass = isFeatured ? 'featured' : '';
 
   return `
-    <a class="app-card" href="${url}" target="_blank" rel="noopener">
+    <a class="app-card ${featuredClass}" href="${url}" target="_blank" rel="noopener">
       <div class="card-top">
         <div class="card-icon"><i class="ti ti-${app.icon || 'app-window'}"></i></div>
         <span class="card-status ${statusClass}">${app.status || 'wip'}</span>
@@ -321,9 +336,39 @@ async function loadApps() {
 
     lastUpdated.textContent = `updated ${new Date().toLocaleDateString('en-SG', { day:'numeric', month:'short', year:'numeric' })}`;
 
+    // Initialize the Staggered Scroll Reveal
+    setupScrollReveal();
+
   } catch (err) {
     container.innerHTML = `<div class="state-msg">Could not load apps.json<br><span style="font-size:0.75rem;opacity:0.7">${err.message}</span></div>`;
   }
+}
+
+function setupScrollReveal() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        
+        // Remove the delay after animation finishes so hover effects stay instant
+        setTimeout(() => {
+          entry.target.style.transitionDelay = '0s';
+        }, 600);
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+
+  // Apply sequential staggered delays to cards in each grid
+  document.querySelectorAll('.apps-grid').forEach(grid => {
+    const cards = grid.querySelectorAll('.app-card');
+    cards.forEach((card, index) => {
+      // 0.1s gap between each card appearing
+      card.style.transitionDelay = `${(index % 3) * 0.1}s`;
+      observer.observe(card);
+    });
+  });
 }
 
 loadApps();

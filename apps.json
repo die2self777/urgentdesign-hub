@@ -6,7 +6,7 @@
     "icon": "calendar",
     "color": "purple",
     "status": "live",
-    "tags": ["scheduling", "meeting"],
+    "tags": ["scheduling", "meeting", "timetable", "free"],
     "category": "Teacher Tools"
   },
   {
@@ -16,7 +16,7 @@
     "icon": "brain",
     "color": "purple",
     "status": "live",
-    "tags": ["AI", "learning", "Oral", "SBC", "Mindmap"],
+    "tags": ["AI", "learning", "Oral", "SBC", "Mindmap", "Speaking"],
     "category": "Thinking Tools"
   },
   {
@@ -26,7 +26,7 @@
     "icon": "world",
     "color": "blue",
     "status": "live",
-    "tags": ["vocabulary", "context", "themes", "plots"],
+    "tags": ["vocabulary", "context", "themes", "plots", "frayer", "prewriting", "meta"],
     "category": "Thinking Tools",
     "featured": true
   },
@@ -47,7 +47,7 @@
     "icon": "message-2",
     "color": "coral",
     "status": "live",
-    "tags": ["writing", "vocabulary"],
+    "tags": ["writing", "vocabulary", "oral", "Compo", "Show"],
     "category": "Thinking Tools"
   },
   {
@@ -57,7 +57,7 @@
     "icon": "scissors",
     "color": "teal",
     "status": "live",
-    "tags": ["cloze", "AI", "reading"],
+    "tags": ["cloze", "AI", "reading", "context", "strategies"],
     "category": "Thinking Tools"
   },
   {
@@ -67,7 +67,7 @@
     "icon": "books",
     "color": "purple",
     "status": "live",
-    "tags": ["extensive reading", "reviews"],
+    "tags": ["extensive reading", "reviews", "books", "harry"],
     "category": "Read to Learn"
   },
   {
@@ -77,7 +77,7 @@
     "icon": "keyboard",
     "color": "purple",
     "status": "live",
-    "tags": ["typing", "writing"],
+    "tags": ["typing", "writing", "games"],
     "category": "Play to Learn"
   },
   {
@@ -87,7 +87,7 @@
     "icon": "puzzle",
     "color": "orange",
     "status": "live",
-    "tags": ["grammar", "SVA"],
+    "tags": ["grammar", "SVA", "P3"],
     "category": "Play to Learn"
   },
   {
@@ -97,7 +97,7 @@
     "icon": "pencil",
     "color": "orange",
     "status": "live",
-    "tags": ["PSLE", "richtext"],
+    "tags": ["PSLE", "rich text", "comprehension"],
     "category": "Read to Learn"
   },
   {
@@ -107,7 +107,7 @@
     "icon": "arrows-exchange",
     "color": "red",
     "status": "live",
-    "tags": ["synthesis", "reportedspeech", "transformation"],
+    "tags": ["synthesis", "reportedspeech", "transformation", "S&T"],
     "category": "Thinking Tools"
   },
   {

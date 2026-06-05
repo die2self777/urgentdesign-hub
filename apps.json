@@ -52,7 +52,7 @@
   {
     "name": "ClozeShave",
     "url": "https://clozeshave.lovable.app",
-    "description": "AI-generated cloze passages for reading comprehension practice.",
+    "description": "Comprehension strategies applied in cloze passages",
     "icon": "scissors",
     "color": "teal",
     "status": "live",
@@ -67,7 +67,7 @@
     "color": "purple",
     "status": "live",
     "tags": ["extensive reading", "reviews"],
-    "category": "Student Tools"
+    "category": "Read to Learn"
   },
   {
     "name": "Pete's Typists",
@@ -77,7 +77,7 @@
     "color": "purple",
     "status": "live",
     "tags": ["typing", "writing"],
-    "category": "Student Tools"
+    "category": "Play to Learn"
   },
   {
     "name": "Mandy's Marshmallows",
@@ -87,7 +87,7 @@
     "color": "orange",
     "status": "live",
     "tags": ["grammar", "SVA"],
-    "category": "Student Tools"
+    "category": "Play to Learn"
   },
   {
     "name": "Please Start Loving English",
@@ -97,7 +97,7 @@
     "color": "orange",
     "status": "live",
     "tags": ["PSLE", "richtext"],
-    "category": "Student Tools"
+    "category": "Read to Learn"
   },
   {
     "name": "S&T Trainer",
@@ -117,6 +117,6 @@
     "color": "red",
     "status": "live",
     "tags": ["words", "games", "hub"],
-    "category": "Student Tools"
+    "category": "Play to Learn"
   }
 ]

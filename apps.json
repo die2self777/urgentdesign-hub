@@ -58,7 +58,7 @@
     "color": "teal",
     "status": "live",
     "tags": ["cloze", "AI", "reading", "context", "strategies"],
-    "category": "Thinking Tools"
+    "category": "Tough Tests"
   },
   {
     "name": "Read or Not",
@@ -108,7 +108,7 @@
     "color": "red",
     "status": "live",
     "tags": ["synthesis", "reportedspeech", "transformation", "S&T"],
-    "category": "Thinking Tools"
+    "category": "Tough Tests"
   },
   {
     "name": "Word Games",
@@ -119,5 +119,15 @@
     "status": "live",
     "tags": ["words", "games", "hub"],
     "category": "Play to Learn"
+  },
+  {
+    "name": "Open-ended Comprehension",
+    "url": "https://psle-comprehension-coach.lovable.app/",
+    "description": "Hacking the OE Comprehension",
+    "icon": "device-gamepad",
+    "color": "red",
+    "status": "beta",
+    "tags": ["compre", "OE", "QAR"],
+    "category": "Tough Tests"
   }
 ]

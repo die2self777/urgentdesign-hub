@@ -17,7 +17,7 @@
     "color": "purple",
     "status": "live",
     "tags": ["AI", "learning", "Oral", "SBC", "Mindmap"],
-    "category": "Student Tools"
+    "category": "Thinking Tools"
   },
   {
     "name": "Thinking before I Write",
@@ -27,7 +27,7 @@
     "color": "blue",
     "status": "live",
     "tags": ["vocabulary", "context", "themes", "plots"],
-    "category": "Student Tools"
+    "category": "Thinking Tools"
   },
   {
     "name": "Grammar Grandma",
@@ -37,7 +37,7 @@
     "color": "amber",
     "status": "live",
     "tags": ["grammar", "FFM"],
-    "category": "Student Tools"
+    "category": "Thinking Tools"
   },
   {
     "name": "Said is Dead",
@@ -47,7 +47,7 @@
     "color": "coral",
     "status": "live",
     "tags": ["writing", "vocabulary"],
-    "category": "Student Tools"
+    "category": "Thinking Tools"
   },
   {
     "name": "ClozeShave",
@@ -57,7 +57,7 @@
     "color": "teal",
     "status": "live",
     "tags": ["cloze", "AI", "reading"],
-    "category": "Student Tools"
+    "category": "Thinking Tools"
   },
   {
     "name": "Read or Not",
@@ -107,7 +107,7 @@
     "color": "red",
     "status": "live",
     "tags": ["synthesis", "reportedspeech", "transformation"],
-    "category": "Student Tools"
+    "category": "Thinking Tools"
   },
   {
     "name": "Word Games",

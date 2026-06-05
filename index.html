@@ -70,20 +70,44 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1.5rem 2rem; 
+    padding: 1rem 2rem 0.5rem; 
+    gap: 2rem;
+    flex-wrap: wrap;
   }
 
   .logo { display: flex; align-items: baseline; gap: 0.35rem; }
   .logo-mark { font-size: 1.25rem; font-weight: 700; color: var(--text-main); letter-spacing: -0.025em; }
   .logo-tld { font-family: var(--font-mono); font-size: 0.75rem; color: var(--primary); font-weight: 500; }
 
-  .header-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: right; line-height: 1.5; }
-  .header-meta span { display: block; }
+  /* ── SEARCH BAR ── */
+  .header-search { flex-grow: 1; max-width: 400px; display: flex; align-items: center; position: relative; }
+  .header-search i { position: absolute; left: 14px; color: var(--text-muted); font-size: 1.1rem; pointer-events: none; }
+  #app-search {
+    width: 100%; padding: 0.6rem 1rem 0.6rem 2.5rem; border-radius: 100px;
+    border: 1px solid var(--border-soft); background: rgba(15,23,42,0.03);
+    font-family: var(--font-display); font-size: 0.85rem; color: var(--text-main);
+    outline: none; transition: all 0.2s;
+  }
+  #app-search:focus { background: var(--card-bg); border-color: var(--primary); box-shadow: 0 0 0 3px rgba(18, 185, 129, 0.1); }
+  #app-search::placeholder { color: var(--text-muted); opacity: 0.7; }
+
+  /* ── DYNAMIC CATEGORY NAV ── */
+  .category-nav {
+    display: flex; gap: 1.5rem; padding: 0.5rem 2rem 1rem;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .category-nav::-webkit-scrollbar { display: none; }
+  .category-link {
+    font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);
+    text-decoration: none; text-transform: uppercase; letter-spacing: 0.05em;
+    white-space: nowrap; transition: color 0.2s;
+  }
+  .category-link:hover { color: var(--text-main); }
 
   /* ── STICKY HERO ── */
   .sticky-hero-container {
     position: sticky;
-    top: 120px; 
+    top: 140px; 
     z-index: 1;
     padding-bottom: 8rem; 
   }
@@ -116,7 +140,9 @@
     min-height: 100vh; 
   }
 
-  /* ── APPS GRID ── */
+  /* ── APPS GRID & OFFSETS ── */
+  .category-section { scroll-margin-top: 130px; } /* Ensures the header doesn't cover the title when scrolling */
+  
   .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-top: 1rem; }
   .section-label { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-main); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
   .section-count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
@@ -143,7 +169,6 @@
     position: relative;
     z-index: 15;
     
-    /* Reveal Animation Defaults */
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.2s ease, border-color 0.2s ease;
@@ -162,12 +187,8 @@
 
   /* ── BENTO BOX FEATURED CARD ── */
   @media (min-width: 768px) {
-    .app-card.featured {
-      grid-column: span 2;
-    }
-    .app-card.featured .card-name {
-      font-size: 1.4rem;
-    }
+    .app-card.featured { grid-column: span 2; }
+    .app-card.featured .card-name { font-size: 1.4rem; }
   }
 
   .card-top { display: flex; align-items: flex-start; justify-content: space-between; }
@@ -184,10 +205,7 @@
   
   .card-icon i { font-family: 'tabler-icons' !important; font-style: normal; }
 
-  .app-card:hover .card-icon {
-    background: var(--primary);
-    color: var(--app-bg);
-  }
+  .app-card:hover .card-icon { background: var(--primary); color: var(--app-bg); }
 
   .card-status { font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.05em; text-transform: uppercase; padding: 4px 8px; border-radius: var(--radius-sm); font-weight: 500; border: 1px solid transparent; }
   .status-live { color: var(--app-bg); background: var(--primary); } 
@@ -224,19 +242,25 @@
 </head>
 <body>
 
+  <!-- STICKY FROSTED HEADER -->
   <header>
     <div class="page header-inner">
       <div class="logo">
         <span class="logo-mark">Urgent Design</span>
         <span class="logo-tld">.app</span>
       </div>
-      <div class="header-meta">
-        <span>EdTech Ecosystem</span>
-        <span id="last-updated">—</span>
+      
+      <div class="header-search">
+        <i class="ti ti-search"></i>
+        <input type="text" id="app-search" placeholder="Search tools, tags, or descriptions..." autocomplete="off">
       </div>
     </div>
+    
+    <!-- Dynamic Nav Container -->
+    <nav class="page category-nav" id="category-nav"></nav>
   </header>
 
+  <!-- BACKGROUND STICKY HERO -->
   <div class="sticky-hero-container">
     <section class="hero page">
       <p class="hero-eyebrow">Micro-App Hub</p>
@@ -248,6 +272,7 @@
     </section>
   </div>
 
+  <!-- FOREGROUND CURTAIN REVEAL -->
   <div class="curtain-reveal">
     <div class="page">
       <div id="ecosystem-container">
@@ -255,7 +280,7 @@
       </div>
 
       <footer>
-        <span>urgentdesign.app</span>
+        <span id="last-updated">urgentdesign.app</span>
         <span>
           <a href="https://supabase.com" target="_blank" rel="noopener">supabase</a>
           &nbsp;·&nbsp;
@@ -267,17 +292,20 @@
 
 <script>
 function buildCard(app) {
-  const url = app.url;
-  const displayUrl = url ? url.replace('https://', '') : '';
+  const url = app.url || '';
+  const displayUrl = url.replace('https://', '');
   const statusClass = { live: 'status-live', beta: 'status-beta', wip: 'status-wip' }[app.status] || 'status-wip';
-  const tags = (app.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+  const tags = (app.tags || []);
+  const tagsHtml = tags.map(t => `<span class="tag">${t}</span>`).join('');
   
-  // Triggers the Bento Box layout for ClozeShave, or any app you add "featured": true to in the JSON.
   const isFeatured = app.featured === true;
   const featuredClass = isFeatured ? 'featured' : '';
 
+  // Consolidate text for the live search engine
+  const searchableText = `${app.name} ${app.description || ''} ${tags.join(' ')} ${url}`.toLowerCase().replace(/"/g, '');
+
   return `
-    <a class="app-card ${featuredClass}" href="${url}" target="_blank" rel="noopener">
+    <a class="app-card ${featuredClass}" href="${url}" target="_blank" rel="noopener" data-searchable="${searchableText}">
       <div class="card-top">
         <div class="card-icon"><i class="ti ti-${app.icon || 'app-window'}"></i></div>
         <span class="card-status ${statusClass}">${app.status || 'wip'}</span>
@@ -285,7 +313,7 @@ function buildCard(app) {
       <div class="card-body">
         <div class="card-name">${app.name}</div>
         <p class="card-desc">${app.description}</p>
-        ${tags ? `<div class="card-tags">${tags}</div>` : ''}
+        ${tagsHtml ? `<div class="card-tags">${tagsHtml}</div>` : ''}
       </div>
       <div class="card-footer">
         <span class="card-url">${displayUrl}</span>
@@ -296,6 +324,7 @@ function buildCard(app) {
 
 async function loadApps() {
   const container = document.getElementById('ecosystem-container');
+  const navContainer = document.getElementById('category-nav');
   const lastUpdated = document.getElementById('last-updated');
 
   try {
@@ -316,28 +345,38 @@ async function loadApps() {
     });
 
     container.innerHTML = '';
+    navContainer.innerHTML = '';
 
     Object.keys(grouped).sort().forEach(category => {
       const categoryApps = grouped[category];
       const liveCount = categoryApps.filter(a => a.status === 'live').length;
+      
+      // Create a URL-safe ID for the anchor links
+      const sectionId = 'cat-' + category.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
+      // 1. Build the Header Nav Link
+      navContainer.insertAdjacentHTML('beforeend', `<a href="#${sectionId}" class="category-link">${category}</a>`);
+
+      // 2. Build the App Section
       const sectionHtml = `
-        <div class="section-header">
-          <span class="section-label">${category}</span>
-          <span class="section-count">${categoryApps.length} Apps · ${liveCount} Live</span>
-        </div>
-        <div class="apps-grid">
-          ${[...categoryApps].reverse().map(buildCard).join('')}
+        <div class="category-section" id="${sectionId}">
+          <div class="section-header">
+            <span class="section-label">${category}</span>
+            <span class="section-count">${categoryApps.length} Apps · ${liveCount} Live</span>
+          </div>
+          <div class="apps-grid">
+            ${[...categoryApps].reverse().map(buildCard).join('')}
+          </div>
         </div>
       `;
       
       container.insertAdjacentHTML('beforeend', sectionHtml);
     });
 
-    lastUpdated.textContent = `updated ${new Date().toLocaleDateString('en-SG', { day:'numeric', month:'short', year:'numeric' })}`;
+    lastUpdated.textContent = `urgentdesign.app · updated ${new Date().toLocaleDateString('en-SG', { day:'numeric', month:'short', year:'numeric' })}`;
 
-    // Initialize the Staggered Scroll Reveal
     setupScrollReveal();
+    setupLiveSearch();
 
   } catch (err) {
     container.innerHTML = `<div class="state-msg">Could not load apps.json<br><span style="font-size:0.75rem;opacity:0.7">${err.message}</span></div>`;
@@ -349,24 +388,46 @@ function setupScrollReveal() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('revealed');
-        
-        // Remove the delay after animation finishes so hover effects stay instant
-        setTimeout(() => {
-          entry.target.style.transitionDelay = '0s';
-        }, 600);
-        
+        setTimeout(() => { entry.target.style.transitionDelay = '0s'; }, 600);
         observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
 
-  // Apply sequential staggered delays to cards in each grid
   document.querySelectorAll('.apps-grid').forEach(grid => {
     const cards = grid.querySelectorAll('.app-card');
     cards.forEach((card, index) => {
-      // 0.1s gap between each card appearing
       card.style.transitionDelay = `${(index % 3) * 0.1}s`;
       observer.observe(card);
+    });
+  });
+}
+
+function setupLiveSearch() {
+  const searchInput = document.getElementById('app-search');
+  
+  searchInput.addEventListener('input', (e) => {
+    const term = e.target.value.toLowerCase().trim();
+    
+    document.querySelectorAll('.category-section').forEach(section => {
+      let hasVisibleCards = false;
+      
+      section.querySelectorAll('.app-card').forEach(card => {
+        const searchableText = card.getAttribute('data-searchable');
+        
+        if (searchableText.includes(term)) {
+          card.style.display = 'flex';
+          hasVisibleCards = true;
+          // Ensure it's fully visible immediately if found during search
+          card.classList.add('revealed');
+          card.style.transitionDelay = '0s'; 
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      // Hide the entire category wrapper if no apps match inside it
+      section.style.display = hasVisibleCards ? 'block' : 'none';
     });
   });
 }

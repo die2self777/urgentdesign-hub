@@ -28,6 +28,7 @@
     "status": "live",
     "tags": ["vocabulary", "context", "themes", "plots"],
     "category": "Thinking Tools"
+    "featured": true
   },
   {
     "name": "Grammar Grandma",

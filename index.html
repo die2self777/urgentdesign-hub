@@ -4,11 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Urgent Design — EdTech Ecosystem</title>
+
 <!-- EL Arcade Fonts: Inter for UI, JetBrains Mono for accents -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.3.0/tabler-icons.min.css">
+
+<!-- FIXED: Corrected Tabler Icons path -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -21,7 +25,7 @@
     --primary: oklch(0.74 0.19 145);   /* Sharp Electric Green */
     --border-soft: oklch(0.9 0 0);     /* Light Gray Border */
     
-    --radius-lg: 0.5rem;               /* 8px, sharper corners */
+    --radius-lg: 0.5rem;               
     --radius-md: calc(0.5rem - 2px);
     --radius-sm: calc(0.5rem - 4px);
     
@@ -50,15 +54,24 @@
     font-weight: 700;
   }
 
-  .page { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+  .page { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
 
-  /* ── HEADER ── */
+  /* ── APPLE-STYLE FROSTED GLASS HEADER ── */
   header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+
+  .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem 0;
-    border-bottom: 1px solid var(--border-soft);
+    padding: 1.5rem 2rem; /* Adjusted for sticky header */
   }
 
   .logo { display: flex; align-items: baseline; gap: 0.35rem; }
@@ -68,14 +81,21 @@
   .header-meta { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); text-align: right; line-height: 1.5; }
   .header-meta span { display: block; }
 
-  /* ── HERO ── */
-  .hero { padding: 5rem 0 4rem; text-align: left; border-bottom: 1px solid var(--border-soft); margin-bottom: 2rem; }
+  /* ── STICKY HERO (Background Layer) ── */
+  .sticky-hero-container {
+    position: sticky;
+    top: 120px; /* Sits right below the header */
+    z-index: 1;
+    padding-bottom: 8rem; /* Creates scroll distance before curtain hits */
+  }
+
+  .hero { padding: 4rem 0 2rem; text-align: left; }
   .hero-eyebrow { 
     display: inline-block;
     font-family: var(--font-mono);
     font-size: 0.75rem; 
     color: var(--text-main); 
-    background: oklch(0.96 0 0); /* Muted secondary bg */
+    background: oklch(0.96 0 0); 
     padding: 4px 12px;
     border-radius: var(--radius-sm);
     font-weight: 500;
@@ -87,7 +107,18 @@
   .hero-title span { color: var(--primary); }
   .hero-sub { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; max-width: 600px; }
 
-  /* ── APPS GRID (Editorial UI) ── */
+  /* ── CURTAIN REVEAL (Foreground Layer sliding over Hero) ── */
+  .curtain-reveal {
+    position: relative;
+    z-index: 10;
+    background: var(--app-bg); /* Solid background to hide hero */
+    border-top: 1px solid var(--border-soft);
+    box-shadow: 0 -20px 40px rgba(0,0,0,0.03); /* Soft shadow cast on hero */
+    padding-top: 2rem;
+    min-height: 100vh; /* Ensures it covers completely */
+  }
+
+  /* ── APPS GRID ── */
   .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; padding-top: 1rem; }
   .section-label { font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-main); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
   .section-count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); font-weight: 400; }
@@ -112,6 +143,7 @@
     box-shadow: var(--shadow-sm);
     transition: all 0.2s ease;
     position: relative;
+    z-index: 15;
   }
   
   .app-card:hover { 
@@ -132,6 +164,9 @@
     transition: background 0.2s, color 0.2s;
   }
   
+  /* Fix: Prevents Inter font from overriding the icon */
+  .card-icon i { font-family: 'tabler-icons' !important; font-style: normal; }
+
   .app-card:hover .card-icon {
     background: var(--primary);
     color: var(--app-bg);
@@ -172,42 +207,52 @@
 </style>
 </head>
 <body>
-<div class="page">
 
+  <!-- STICKY FROSTED HEADER -->
   <header>
-    <div class="logo">
-      <span class="logo-mark">Urgent Design</span>
-      <span class="logo-tld">.app</span>
-    </div>
-    <div class="header-meta">
-      <span>EdTech Ecosystem</span>
-      <span id="last-updated">—</span>
+    <div class="page header-inner">
+      <div class="logo">
+        <span class="logo-mark">Urgent Design</span>
+        <span class="logo-tld">.app</span>
+      </div>
+      <div class="header-meta">
+        <span>EdTech Ecosystem</span>
+        <span id="last-updated">—</span>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
-    <p class="hero-eyebrow">Micro-App Hub</p>
-    <h1 class="hero-title">
-      Tools built for<br>
-      <span>language learners.</span>
-    </h1>
-    <p class="hero-sub">A decoupled suite of AI-assisted learning tools. Built by well-loved, long-suffering teachers, in response to real classroom needs.</p>
-  </section>
-
-  <div id="ecosystem-container">
-    <div class="state-msg">Fetching ecosystem…</div>
+  <!-- BACKGROUND STICKY HERO -->
+  <div class="sticky-hero-container">
+    <section class="hero page">
+      <p class="hero-eyebrow">Micro-App Hub</p>
+      <h1 class="hero-title">
+        Tools built for<br>
+        <span>language learners.</span>
+      </h1>
+      <p class="hero-sub">A decoupled suite of AI-assisted learning tools. Built by well-loved, long-suffering teachers, in response to real classroom needs.</p>
+    </section>
   </div>
 
-  <footer>
-    <span>urgentdesign.app</span>
-    <span>
-      <a href="https://supabase.com" target="_blank" rel="noopener">supabase</a>
-      &nbsp;·&nbsp;
-      <a href="https://notion.so" target="_blank" rel="noopener">notion</a>
-    </span>
-  </footer>
+  <!-- FOREGROUND CURTAIN REVEAL -->
+  <div class="curtain-reveal">
+    <div class="page">
+      
+      <div id="ecosystem-container">
+        <div class="state-msg">Fetching ecosystem…</div>
+      </div>
 
-</div>
+      <footer>
+        <span>urgentdesign.app</span>
+        <span>
+          <a href="https://supabase.com" target="_blank" rel="noopener">supabase</a>
+          &nbsp;·&nbsp;
+          <a href="https://notion.so" target="_blank" rel="noopener">notion</a>
+        </span>
+      </footer>
+      
+    </div>
+  </div>
 
 <script>
 function buildCard(app) {

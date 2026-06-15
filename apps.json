@@ -126,8 +126,18 @@
     "description": "Hacking the OE Comprehension",
     "icon": "Wand2",
     "color": "red",
-    "status": "beta",
+    "status": "live",
     "tags": ["compre", "OE", "QAR"],
     "category": "Tough Tests"
+  },
+    {
+    "name": "Mastermind Mysteries",
+    "url": "https://mastermind-mystery.base44.app/",
+    "description": "Boost your brains!",
+    "icon": "Wand2",
+    "color": "red",
+    "status": "live",
+    "tags": ["lateral", "brain", "yesorno"],
+    "category": "Play to Learn"
   }
 ]

@@ -433,6 +433,28 @@ function setupLiveSearch() {
 }
 
 loadApps();
+// --- NEW PASSWORD INTERCEPTOR ---
+// We use Event Delegation because your app cards are loaded dynamically AFTER the page loads.
+document.addEventListener("click", function(event) {
+  
+  // Check if the clicked element (or its parent) is an app-card link
+  const appCard = event.target.closest('a.app-card');
+  
+  // If they clicked an app card, intercept it
+  if (appCard) {
+    event.preventDefault(); // Stop immediate navigation
+    
+    const password = prompt("Enter the class password:");
+    
+    if (password === "pikachu") { 
+      // Open the app in a new tab (respecting your original target="_blank" design)
+      window.open(appCard.href, '_blank');
+    } else if (password !== null) {
+      alert("Incorrect password. Try again!");
+    }
+  }
+});
+
 </script>
 </body>
 </html>

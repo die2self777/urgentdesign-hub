@@ -12,7 +12,7 @@
   {
     "name": "SBC Brain",
     "url": "https://sbcbrain.lovable.app",
-    "description": "AI-powered learning tool for SBC students.",
+    "description": "Brainstorming and feedback for SBC pictures+topics",
     "icon": "brain",
     "color": "purple",
     "status": "live",
@@ -22,7 +22,7 @@
   {
     "name": "Thinking before I Write",
     "url": "https://wordtoworld.lovable.app",
-    "description": "Vocabulary in context — bridging words to real-world meaning.",
+    "description": "Bridging words to plans to writing",
     "icon": "world",
     "color": "blue",
     "status": "live",
@@ -33,7 +33,7 @@
   {
     "name": "Grammar Grandma",
     "url": "https://grammargrandma.lovable.app",
-    "description": "Grammar practice with a warm, patient teaching persona.",
+    "description": "Grammar practice with simpler explanations!",
     "icon": "book",
     "color": "amber",
     "status": "live",
@@ -43,7 +43,7 @@
   {
     "name": "Said is Dead",
     "url": "https://saidisdead.lovable.app",
-    "description": "Expand dialogue vocabulary — bury 'said', find better words.",
+    "description": "Expand vocabulary in SBC and in Writing",
     "icon": "message-2",
     "color": "coral",
     "status": "live",
@@ -63,22 +63,12 @@
   {
     "name": "Read or Not",
     "url": "https://readornot.base44.app",
-    "description": "Book Reviews and customised recommendations from Top 100 Children's Books.",
+    "description": "Your book reviews + customised recommendations from the Top 100 list",
     "icon": "books",
     "color": "purple",
     "status": "live",
     "tags": ["extensive reading", "reviews", "books", "harry"],
     "category": "Read to Learn"
-  },
-  {
-    "name": "Pete's Typists",
-    "url": "https://petestypists.lovable.app",
-    "description": "Typing speed + memorising important chunks.",
-    "icon": "keyboard",
-    "color": "purple",
-    "status": "live",
-    "tags": ["typing", "writing", "games"],
-    "category": "Play to Learn"
   },
   {
     "name": "Mandy's Marshmallows",
@@ -88,6 +78,16 @@
     "color": "orange",
     "status": "live",
     "tags": ["grammar", "SVA", "P3"],
+    "category": "Play to Learn"    
+  },
+  {
+    "name": "Pete's Typists",
+    "url": "https://petestypists.lovable.app",
+    "description": "Soup up your typing speed + memorise important chunks",
+    "icon": "keyboard",
+    "color": "purple",
+    "status": "live",
+    "tags": ["typing", "writing", "games"],
     "category": "Play to Learn"
   },
   {

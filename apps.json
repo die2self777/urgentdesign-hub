@@ -5,7 +5,7 @@
     "description": "SBC: record, transcribe, proofread, improve, score",
     "icon": "microphone",
     "color": "purple",
-    "status": "live",
+    "status": "beta",
     "tags": ["SBC", "frames", "PSLE", "record"],
     "category": "Tough Tests"
   },

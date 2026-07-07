@@ -1,5 +1,15 @@
 [
   {
+    "name": "Reading Aloud",
+    "url": "https://reading-aloud.lovable.app/",
+    "description": "RA: record, transcribe, evaluate",
+    "icon": "microphone",
+    "color": "read",
+    "status": "beta",
+    "tags": ["oral", "RA", "frames", "PSLE", "record", "feedback"],
+    "category": "Tough Tests"
+  },
+  {
     "name": "Ready to Talk",
     "url": "https://improvesbc.lovable.app",
     "description": "SBC: record, transcribe, proofread, improve, score",

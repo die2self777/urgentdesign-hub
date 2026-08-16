@@ -1,4 +1,15 @@
 [
+
+  {
+    "name": "Monitor your Writing",
+    "url": "https://writersright.base44.app",
+    "description": "Thinking as a director as your write",
+    "icon": "camera",
+    "color": "blue",
+    "status": "beta",
+    "tags": ["write", "compo", "FNIO", "shownottell", "feedback"],
+    "category": "Thinking Tools"
+  },
   {
     "name": "Reading Aloud",
     "url": "https://reading-aloud.lovable.app/",
@@ -40,7 +51,7 @@
     "category": "Thinking Tools"
   },
   {
-    "name": "Thinking before I Write",
+    "name": "Plan to Write",
     "url": "https://wordtoworld.lovable.app",
     "description": "Bridging words to plans to writing",
     "icon": "world",

@@ -80,7 +80,7 @@
     "color": "amber",
     "status": "live",
     "tags": ["grammar", "FFM"],
-    "category": ["Thinking Tools", "Grammar"]
+    "category": "Grammar"
   },
   {
     "name": "Said is Dead",
@@ -120,7 +120,7 @@
     "color": "orange",
     "status": "live",
     "tags": ["grammar", "SVA", "P3"],
-    "category": ["Play to Learn", "Grammar"]    
+    "category": "Grammar"    
   },
   {
     "name": "Tie Thai's Type Speed",

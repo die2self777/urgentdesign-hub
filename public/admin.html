@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urgent Design — Admin</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+  <!-- ADMIN LOGIN -->
+  <div id="admin-login-view" class="login-view">
+    <div class="login-card">
+      <div class="login-logo">
+        <span class="logo-mark">Urgent Design</span>
+        <span class="logo-tld">.app</span>
+      </div>
+      <p class="login-subtitle">Admin Dashboard</p>
+      <form id="admin-login-form">
+        <div class="form-field">
+          <label for="admin-password">Password</label>
+          <input type="password" id="admin-password" placeholder="Enter admin password" required>
+        </div>
+        <button type="submit" class="login-btn">Enter</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN DASHBOARD -->
+  <div id="admin-dashboard" style="display:none">
+    <header class="admin-header">
+      <div class="admin-header-inner">
+        <div class="admin-logo">Urgent Design · Admin</div>
+        <button id="admin-logout" class="logout-btn">Logout</button>
+      </div>
+    </header>
+    <nav class="admin-tabs">
+      <button class="tab-btn active" data-tab="users">Users</button>
+      <button class="tab-btn" data-tab="apps">App Directory</button>
+      <button class="tab-btn" data-tab="activity">Cross-App Activity</button>
+      <button class="tab-btn" data-tab="pqp">PQP Submissions</button>
+      <button class="tab-btn" data-tab="changelog">Changelog</button>
+    </nav>
+    <div class="admin-content">
+      <div id="tab-users" class="tab-content active"></div>
+      <div id="tab-apps" class="tab-content"></div>
+      <div id="tab-activity" class="tab-content"></div>
+      <div id="tab-pqp" class="tab-content"></div>
+      <div id="tab-changelog" class="tab-content"></div>
+    </div>
+  </div>
+
+  <!-- APP EDIT MODAL -->
+  <div id="app-modal" class="modal-overlay" style="display:none">
+    <div class="modal-card">
+      <h3 id="app-modal-title">Add App</h3>
+      <form id="app-form">
+        <input type="hidden" id="app-id">
+        <div class="form-field">
+          <label for="app-title">Title</label>
+          <input type="text" id="app-title" required>
+        </div>
+        <div class="form-field">
+          <label for="app-category">Category</label>
+          <input type="text" id="app-category" required>
+        </div>
+        <div class="form-field">
+          <label for="app-url">URL</label>
+          <input type="text" id="app-url" required>
+        </div>
+        <div class="form-field">
+          <label for="app-description">Description</label>
+          <textarea id="app-description" rows="2"></textarea>
+        </div>
+        <div class="form-field">
+          <label for="app-icon">Icon (Tabler icon name)</label>
+          <input type="text" id="app-icon" value="app-window">
+        </div>
+        <div class="form-field">
+          <label for="app-status">Status</label>
+          <select id="app-status">
+            <option value="live">Live</option>
+            <option value="beta">Beta</option>
+            <option value="wip">WIP</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="app-tags">Tags (comma-separated)</label>
+          <input type="text" id="app-tags">
+        </div>
+        <div class="form-field form-check">
+          <label><input type="checkbox" id="app-featured"> Featured</label>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="login-btn">Save</button>
+          <button type="button" class="cancel-btn" id="app-cancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

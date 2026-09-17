@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urgent Design — EdTech Ecosystem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+
+  <!-- LOGIN VIEW -->
+  <div id="login-view" class="login-view">
+    <div class="login-card">
+      <div class="login-logo">
+        <span class="logo-mark">Urgent Design</span>
+        <span class="logo-tld">.app</span>
+      </div>
+      <p class="login-subtitle">Tools built for language learners.</p>
+      <form id="login-form">
+        <div class="form-field">
+          <label for="class-select">Class</label>
+          <select id="class-select" required>
+            <option value="">Select your class…</option>
+            <option value="P1">P1</option>
+            <option value="P2">P2</option>
+            <option value="P3">P3</option>
+            <option value="P4">P4</option>
+            <option value="P5">P5</option>
+            <option value="P6">P6</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="name-input">Name</label>
+          <input type="text" id="name-input" placeholder="Enter your name" required>
+        </div>
+        <button type="submit" class="login-btn">Enter</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- DIRECTORY VIEW -->
+  <div id="directory-view" style="display:none">
+    <header>
+      <div class="page header-inner">
+        <div class="logo">
+          <span class="logo-mark">Urgent Design</span>
+          <span class="logo-tld">.app</span>
+        </div>
+        <div class="header-search">
+          <i class="ti ti-search"></i>
+          <input type="text" id="app-search" placeholder="Search tools, tags, or descriptions…" autocomplete="off">
+        </div>
+        <div class="header-user">
+          <span id="user-display" class="user-display"></span>
+          <button id="logout-btn" class="logout-btn">Logout</button>
+        </div>
+      </div>
+      <nav class="page category-nav" id="category-nav"></nav>
+    </header>
+
+    <div class="sticky-hero-container">
+      <section class="hero page">
+        <p class="hero-eyebrow">Micro-App Hub</p>
+        <h1 class="hero-title">
+          Tools built for<br>
+          <span>language learners.</span>
+        </h1>
+        <p class="hero-sub">A decoupled suite of AI-assisted learning tools. Built by well-loved, long-suffering teachers, in response to real classroom needs.</p>
+      </section>
+    </div>
+
+    <div class="curtain-reveal">
+      <div class="page">
+        <div id="ecosystem-container">
+          <div class="state-msg">Fetching ecosystem…</div>
+        </div>
+        <footer>
+          <span id="last-updated">urgentdesign.app</span>
+          <span>
+            <a href="https://supabase.com" target="_blank" rel="noopener">supabase</a>
+            &nbsp;·&nbsp;
+            <a href="https://notion.so" target="_blank" rel="noopener">notion</a>
+          </span>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

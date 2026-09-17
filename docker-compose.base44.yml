@@ -1,9 +1,14 @@
 services:
   web:
-    image: nginx:alpine
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
-      - "3000:80"
+      - "3000:3000"
     volumes:
-      - ./:/usr/share/nginx/html:ro
-      - ./nginx.base44.conf:/etc/nginx/nginx.conf:ro
+      - ./:/app
+    command: sh -c "npm install && npx nodemon server.js"
+    env_file:
+      - ./.env.base44-defaults
+      - /run/base44/app.env
     restart: unless-stopped
